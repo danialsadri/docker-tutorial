@@ -11,13 +11,12 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
     restart: always
-  
-  
+
   app:
+    container_name: django_app
+    image: app
     build:
       context: .
-    image: app
-    container_name: django-app
     command: >
       sh -c "python manage.py migrate &&
              python manage.py collectstatic --no-input --clear &&
@@ -36,10 +35,9 @@ services:
       - DATABASE-HOST=database
       - DATABASE-PORT=5432
   
-  
   nginx:
-    image: nginx
     container_name: nginx
+    image: nginx
     ports:
       - "80:80"
     volumes:
