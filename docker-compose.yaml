@@ -12,9 +12,9 @@ services:
       - postgres:/var/lib/postgresql/data
     restart: always
 
-  app:
+  django_app:
     container_name: django_app
-    image: app
+    image: django_app
     build:
       context: .
     command: >
@@ -30,11 +30,11 @@ services:
       - database
     environment:
       - DEBUG=False
-      - ALLOWED_HOSTS=*
+      - HOST=*
       - DATABASE-NAME=postgres
       - DATABASE-USER=postgres
       - DATABASE-PASSWORD=postgres
-      - DATABASE-HOST=database
+      - DATABASE-HOST=127.0.0.1
       - DATABASE-PORT=5432
   
   nginx:
