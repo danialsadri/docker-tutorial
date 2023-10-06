@@ -28,7 +28,7 @@ services:
       - database
     environment:
       - DEBUG=False
-      - HOST=*
+      - ALLOWED_HOSTS=*
       - DATABASE-NAME=postgres
       - DATABASE-USER=postgres
       - DATABASE-PASSWORD=postgres
